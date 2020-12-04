@@ -1,5 +1,5 @@
 'use strict'
-const CircuitBreaker = require('circuitbreaker-lambda')
+const CircuitBreaker = require('../lib/circuitbreaker.js')
 let message
 
 const options = {
@@ -38,3 +38,4 @@ exports.handler = async (event) => {
   }
   return response
 }
+exports.handler()
