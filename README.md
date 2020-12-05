@@ -12,9 +12,15 @@ TODOS:
   [ ]  Enable a DLQ(?)
 
 
+State Machine States:
+Current: OPEN, CLOSED, HALF
+Suggested:  UNHEALTHY (OPEN), HEALTHY (CLOSED), FAILING (HALF)
+
+From Jesse:  I'm unsure if FAILING is better than MONITORING as a state to capture moments when we've only had a small number of errors/failures or when it's itermittent.  Thoughts?
 
 
 
+========================================================
 # Circuit breaker for AWS Lambda - circuitbreaker-lambda
 
 ## Description
