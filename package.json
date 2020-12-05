@@ -4,7 +4,7 @@
   "description": "Module for circuit breaker pattern in AWS Lambda",
   "main": "./lib/circuitbreaker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./example/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@google-cloud/firestore": "^4.8.0"
+  }
 }

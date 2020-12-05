@@ -1,3 +1,20 @@
+
+
+https://tech.trivago.com/2019/04/09/circuit-breaker-with-aws-step-functions/
+
+TODOS:
+
+[ ] Map the state machine
+  [ ]  Wait before next call (call the function itself (but in a new context))
+  [ ]  Establish exponential backoff rate 
+        - Max Attempts: how many attempts for one function instance before it shifts back to the state machine
+        - BackoffRate: exponential rate between attempts
+  [ ]  Enable a DLQ(?)
+
+
+
+
+
 # Circuit breaker for AWS Lambda - circuitbreaker-lambda
 
 ## Description
