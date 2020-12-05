@@ -20,7 +20,6 @@ From Jesse:  I'm unsure if FAILING is better than MONITORING as a state to captu
 
 
 
-========================================================
 # Circuit breaker for AWS Lambda - circuitbreaker-lambda
 
 ## Description

@@ -14,3 +14,6 @@ example/.serverless/
 example/.aws-sam/
 example/node_modules/
 example/samconfig.toml
+
+
+develop-circuitbreaker-ch-com-6ebc07f29eab.json
