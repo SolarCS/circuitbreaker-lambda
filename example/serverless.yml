@@ -1,48 +1,27 @@
-service: circuitbreaker-lambda-example
+service: circuitbreaker-gcp
 frameworkVersion: ">=1.65.0"
 provider:
-  name: aws
-  runtime: nodejs12.x
+  name: google
+  runtime: nodejs10.x
   memorySize: 128
-  iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:GetItem
-        - dynamodb:UpdateItem
-      Resource:
-        Fn::Join:
-          - ''
-          - - 'arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/'
-            - Ref: circuitbreakerLambdaTable
+  project: develop-circuitbreaker-ch-com
+  credentials: ~/.gcloud/develop-circuitbreaker-ch-com-6ebc07f29eab.json
+
+plugins:
+  - serverless-google-cloudfunctions
 
 functions:
-  circuitbreakerLambdaFunction:
+  circuitbreakerCloudFunction:
     handler: index.handler
     timeout: 3
     environment:
       CIRCUITBREAKER_TABLE:
-        Ref: circuitbreakerLambdaTable
+        Ref: circuits
     events:
       - httpApi:
           method: GET
-          path: /circuitbreakerLambda
-
-resources:
-  Resources:
-    circuitbreakerLambdaTable:
-      Type: 'AWS::DynamoDB::Table'
-      DeletionPolicy: Delete
-      Properties:
-        AttributeDefinitions:
-          -
-            AttributeName: id
-            AttributeType: S
-        KeySchema:
-          -
-            AttributeName: id
-            KeyType: HASH
-        BillingMode: PAY_PER_REQUEST
-
+          path: /circuitbreakerCloud
+          
 package:
   exclude:
     - ./client/**
