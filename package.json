@@ -4,7 +4,7 @@
   "description": "Module for circuit breaker pattern in AWS Lambda",
   "main": "./lib/circuitbreaker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./example/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,4 @@
   "dependencies": {
     "@google-cloud/firestore": "^4.8.0"
   }
-}
 }

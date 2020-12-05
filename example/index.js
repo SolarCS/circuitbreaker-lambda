@@ -27,9 +27,21 @@ function fallbackFunction () {
   })
 }
 
+
 exports.handler = async (event) => {
   const circuitBreaker = new CircuitBreaker(unreliableFunction, options)
-  await circuitBreaker.fire()
+
+  let queue = circuitBreaker.fire()
+  for(let x=0;x<100;x++){
+    queue = queue.then(async ()=>{
+      if (circuitBreaker.state === 'OPEN'){
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+      return circuitBreaker.fire()
+    })
+  }
+
+  await queue
   const response = {
     statusCode: 200,
     body: JSON.stringify({
@@ -38,4 +50,7 @@ exports.handler = async (event) => {
   }
   return response
 }
+
+
 exports.handler()
+
